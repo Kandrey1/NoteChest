@@ -23,12 +23,14 @@ class Database:
         """ Обновляет данные записи в БД.
             :param
                 data_response - json данные в запросе
-                                {"id_update": , "name": , "email": ,
+                                {"id_update": , "login": , "email": ,
                                  "password": }
         """
         try:
-            data_update = data_response.copy()
-            data_update.pop('id_update')
+            data_update = {"login": data_response['login'],
+                           "email": data_response['email'],
+                           "password": User.get_hash_pass(
+                                data_response['password'])}
 
             if data_response['id_update']:
                 db.session.execute(update(User).

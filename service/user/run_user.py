@@ -13,7 +13,7 @@ def create_table():
     db.create_all()
 
 
-app.register_blueprint(api_bp, url_prefix='/api')
+app.register_blueprint(api_bp, url_prefix='/api/user')
 
 
 @app.route("/")
@@ -21,7 +21,7 @@ def index():
     """ Представление главной страницы """
     context = dict()
     context['title'] = "Home"
-    return {"Docker": "SERVICE USER"}
+    return "SERVICE USER"
 
 
 if __name__ == '__main__':

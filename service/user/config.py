@@ -4,8 +4,16 @@ class Config(object):
 
     JWT_SECRET_KEY = 'sdfhj;lh3423413sdfasdfa1345635'
 
-    DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
-        user="postgres", pw="pgpass", url="postgres:5432", db="user_db")
+    # Для локальной разработки и тестирования
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///db_user.sqlite'
 
+    # Для образа Docker. Для работы с Postgres
+    DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
+        user='postgres', pw='pgpass', url='postgres:5432', db='user')
     SQLALCHEMY_DATABASE_URI = DB_URL
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+class ConfigTest(object):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../tests/db_test.sqlite'

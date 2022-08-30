@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:11
     environment:
-      POSTGRES_DB: "user_db"
+      POSTGRES_DB: "user"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "pgpass"
       POSTGRES_HOST: "postgres"
