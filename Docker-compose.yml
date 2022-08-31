@@ -12,7 +12,7 @@ services:
       - ./database/pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-  app:
+  service_user:
     build: ./service/user
     depends_on:
       - postgres

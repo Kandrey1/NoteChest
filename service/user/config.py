@@ -17,3 +17,4 @@ class Config(object):
 
 class ConfigTest(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///../tests/db_test.sqlite'
+    JWT_SECRET_KEY = 'sdfhhghfg12321asdfa1345635'

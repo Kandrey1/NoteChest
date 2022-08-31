@@ -13,6 +13,29 @@ def test_controllers_user_register(client_test, app_test):
 
     assert response.status_code == 200
     assert user.email == "user1@user"
+    assert user.login == "user1"
+    assert response.json['access_token']
+
+
+def test_controllers_user_auth(client_test, app_test):
+    with app_test.app_context():
+        user1 = User(login='user1',
+                     email='user1@user',
+                     password="password_user1")
+
+        db.session.add(user1)
+        db.session.commit()
+
+        assert len(User.query.all()) == 1
+        assert User.query.first().login == 'user1'
+
+    data = {"email": "user1@user",
+            "password": "password_user1"}
+
+    response = client_test.post("/api/user/auth", json=data)
+
+    assert response.status_code == 200
+    assert response.json['access_token']
 
 
 def test_controllers_user_update(client_test, app_test):
@@ -32,7 +55,7 @@ def test_controllers_user_update(client_test, app_test):
     response = client_test.put("/api/user/crud", json=data_update)
 
     assert response.status_code == 200
-    assert response.json == {'message': 'OK'}
+    assert response.json == {'OK': 'Data user id=1 update'}
     assert User.query.first().email == "user2@user"
 
 
@@ -59,7 +82,7 @@ def test_controllers_user_dell(client_test, app_test):
 
     assert response.status_code == 200
     assert len(User.query.all()) == 1
-    assert response.json == {'message': 'OK'}
+    assert response.json == {'OK': 'User id=1 delete'}
     assert User.query.first().email == "user2@user"
     assert User.query.first().login == 'user2'
 

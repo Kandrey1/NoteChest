@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_jwt_extended import get_jwt_identity
 from .utils import Database
 from .models import User, UserSchema
 
@@ -22,8 +22,7 @@ class ControllersUserRegister(Resource):
             data_json = request.get_json()
 
             if User.query.filter(User.email == data_json['email']).first():
-                raise Exception(f"Error. User with email: {data_json['email']}'\
-                                'exist")
+                raise Exception(f"User with email: {data_json['email']} exist")
 
             new_user = User(login=data_json['login'],
                             email=data_json['email'],
@@ -34,7 +33,7 @@ class ControllersUserRegister(Resource):
             token = new_user.get_token()
 
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
         return {'access_token': token}, 200
 
@@ -61,14 +60,14 @@ class ControllersUserAuth(Resource):
             token = user.get_token()
 
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
         return {'access_token': token}, 200
 
 
+# TODO Реализовать выход пользователя
 class ControllersUserLogout(Resource):
     """ Logout пользователя """
-    # @jwt_required()
     def post(self):
         current_user = get_jwt_identity()
         return current_user, 200
@@ -76,7 +75,6 @@ class ControllersUserLogout(Resource):
 
 class ControllersUserCrud(Resource):
     """ Обрабатывает запросы(PUT, DELETE) связанные с пользователем """
-    # @jwt_required()
     def put(self):
         """ PUT запрос на обновление данных пользователя.
             Данные запроса передаются в json
@@ -94,13 +92,12 @@ class ControllersUserCrud(Resource):
             Database.update(data_response=data_json)
 
         except KeyError as e:
-            return {'message': f'Error. Не задано <{e}>'}
+            return {'Error': f'Не задано <{e}>'}, 400
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
-        return {'message': 'OK'}, 200
+        return {'message': f"Data user id={data_json['id_update']} update"}, 200
 
-    # @jwt_required()
     def delete(self):
         """ DELETE запрос на удаление пользователя из БД.
             Данные запроса передаются в json {"id_delete":}
@@ -116,9 +113,9 @@ class ControllersUserCrud(Resource):
             Database.dell(id_delete=data_json["id_delete"])
 
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
-        return {'message': 'OK'}, 200
+        return {'message': f"User id={data_json['id_delete']} delete"}, 200
 
 
 class ControllersUserGetAll(Resource):
@@ -136,7 +133,7 @@ class ControllersUserGetAll(Resource):
                 all_user[u.id] = u.login
 
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
         return all_user, 200
 
@@ -159,7 +156,7 @@ class ControllersUserGet(Resource):
             data_user_sh = user_sh.dump(data_user)
 
         except Exception as e:
-            return {'message': f'Error. <{e}>'}
+            return {'Error': f'{e}'}, 400
 
         return data_user_sh, 200
 

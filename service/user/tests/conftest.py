@@ -2,6 +2,7 @@ import pytest
 from ..config import ConfigTest
 from ..app import create_app
 from ..app.models import db
+from flask_jwt_extended import JWTManager
 
 
 @pytest.fixture
@@ -20,4 +21,5 @@ def app_test():
 def client_test(app_test):
     from ..app.blueprint_api import api_bp
     app_test.register_blueprint(api_bp, url_prefix='/api/user')
+    jwt = JWTManager(app_test)
     return app_test.test_client()
