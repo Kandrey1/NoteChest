@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ context.title }}</title>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+</head>
+<body class="body">
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                    <a href="{{ url_for('index') }}" class="header__logo">LOGO</a>
+                    <nav class="header__menu">
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <a href="{{ url_for('index') }}" class="menu__link">Главная</a>
+                            </li>
+                            <div class="enter">
+
+                                    <ul class="enter__list">
+                                        <li class="enter__item"><a href="{{ url_for('fronted_user.register') }}" class="enter__link">Регистрация |</a></li>
+                                        <li class="enter__item"><a href="{{ url_for('fronted_user.auth') }}" class="enter__link">| Войти</a></li>
+                                    </ul>
+
+
+                            </div>
+                        </ul>
+                    </nav>
+            </div>
+        </header>
+        <main class="main__container">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

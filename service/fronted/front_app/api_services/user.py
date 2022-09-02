@@ -1,0 +1,7 @@
+SERVICE_USER_HOST = 'http://service_user:5000'
+SERVICE_USER_REGISTER = '/api/user/register'
+SERVICE_USER_AUTH = '/api/user/auth'
+SERVICE_USER_LOGOUT = '/api/user/logout'
+SERVICE_USER_CRUD = '/api/user/crud'
+SERVICE_USER_GET_ALL = '/api/user/get/all'
+SERVICE_USER_GET = '/api/user/get'

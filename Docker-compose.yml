@@ -1,7 +1,8 @@
 version: "3"
 services:
   postgres:
-    image: postgres:11
+    image: postgres:11.4-alpine
+    container_name: postgres
     environment:
       POSTGRES_DB: "user"
       POSTGRES_USER: "postgres"
@@ -10,11 +11,21 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./database/pgdata:/var/lib/postgresql/data
+    restart: always
     ports:
-      - "5432:5432"
+      - 5432:5432
+  service_fronted:
+    build: ./service/fronted
+    container_name: service_fronted
+    depends_on:
+      - postgres
+      - service_user
+    ports:
+      - 5000:5000
   service_user:
     build: ./service/user
+    container_name: service_user
     depends_on:
       - postgres
     ports:
-      - "5000:5000"
+      - 5001:5000
