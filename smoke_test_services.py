@@ -21,3 +21,14 @@ try:
         print("Service USER: NO CONNECT")
 except:
     print("Service USER: Error")
+
+try:
+    url_s_user = "http://localhost:5002/api/link/test/work_service/status"
+    res_user = requests.get(url_s_user)
+
+    if res_user.status_code == 200:
+        print("Service LINK: OK")
+    else:
+        print("Service LINK: NO CONNECT")
+except:
+    print("Service LINK: Error")
