@@ -38,7 +38,7 @@ class ControllersLinkAdd(Resource):
 class ControllersLinkUpdate(Resource):
     """ Обновляет данные ссылки в БД """
     def put(self):
-        """ PUT запрос на обновление данных пользователя.
+        """ PUT запрос на обновление ссылки.
             Данные запроса передаются в json
             {"id_update":, "url":, "comment":, "user_id":}
             :param
@@ -63,10 +63,10 @@ class ControllersLinkUpdate(Resource):
 class ControllersLinkDelete(Resource):
     """ Удаляет ссылку из БД """
     def delete(self):
-        """ DELETE запрос на удаление пользователя из БД.
+        """ DELETE запрос на удаление ссылки из БД.
             Данные запроса передаются в json {"id_delete":}
             :param
-                id_delete - id пользователя в БД, которого надо удалить.
+                id_delete - id ссылки в БД, которую надо удалить.
             :returns Сообщение об успешности выполнения или ошибка.
         """
         try:
@@ -85,7 +85,7 @@ class ControllersLinkDelete(Resource):
 class ControllersLinkGetAll(Resource):
     """ Возвращает все ссылки из БД """
     def get(self):
-        """ GET запрос на получение списка всех пользователей в БД
+        """ GET запрос на получение списка всех ссылок в БД
             :return Список всех пользователей.
         """
         try:
@@ -105,7 +105,7 @@ class ControllersLinkGetAll(Resource):
 class ControllersUserLinksGet(Resource):
     """ Возвращает все ссылки пользователя """
     def get(self):
-        """ GET запрос на получение данных о пользователе.
+        """ GET запрос на получение всех ссылок пользователя.
             Данные запроса передаются "?user_id="
             :param
                 user_id - id пользователя.

@@ -55,7 +55,7 @@ def test_controllers_user_update(client_test, app_test):
     response = client_test.put("/api/user/crud", json=data_update)
 
     assert response.status_code == 200
-    assert response.json == {'OK': 'Data user id=1 update'}
+    assert response.json == {'message': 'Data user id=1 update'}
     assert User.query.first().email == "user2@user"
 
 
@@ -82,7 +82,7 @@ def test_controllers_user_dell(client_test, app_test):
 
     assert response.status_code == 200
     assert len(User.query.all()) == 1
-    assert response.json == {'OK': 'User id=1 delete'}
+    assert response.json == {'message': 'User id=1 delete'}
     assert User.query.first().email == "user2@user"
     assert User.query.first().login == 'user2'
 

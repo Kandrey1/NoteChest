@@ -9,7 +9,7 @@ class Config(object):
 
     # Для образа Docker. Для работы с Postgres
     DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
-        user='postgres', pw='pgpass', url='postgres:5432', db='user')
+        user='postgres', pw='pgpass', url='postgres:5432', db='note_chest')
     SQLALCHEMY_DATABASE_URI = DB_URL
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -17,4 +17,5 @@ class Config(object):
 
 class ConfigTest(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///../tests/db_test.sqlite'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = 'sdfhhghfg12321asdfa1345635'
