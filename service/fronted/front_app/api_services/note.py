@@ -1,0 +1,6 @@
+SERVICE_NOTE_HOST = 'http://service_note:5000'
+SERVICE_NOTE_ADD = '/api/note/add'
+SERVICE_NOTE_UPDATE = '/api/note/update'
+SERVICE_NOTE_DELETE = '/api/note/delete'
+SERVICE_NOTE_GET_ALL = '/api/note/get/all'
+SERVICE_NOTE_GET = '/api/note/get'

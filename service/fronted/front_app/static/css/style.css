@@ -57,6 +57,22 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
     line-height: 34px;
 }
 /*---------------------------------------------------*/
+.sub__menu{
+    margin: 0px 0px 0px 80px;
+}
+.sub__menu__list {
+    display: flex;
+}
+.sub__menu__item:not(:last-child) {
+    margin: 0px 20px 0px 0px;
+}
+.sub__menu__link {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 34px;
+}
+/*---------------------------------------------------*/
 .enter {
     margin: 0px 0px 0px 300px;
 }
@@ -72,92 +88,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
 }
 /*--------------------- HEADER end -----------------------------------------------------------------------*/
 /*-----------------------MAIN start -----------------------------------------------------------------------*/
-.main__container {
-    background-color: #DCDCDC;
-    max-width: 900px;
-    padding: 0px 15px;
-    margin: 0px auto;
-}
-/*---------------------------------------------------*/
-.personal__menu {
-    margin: 0px 0px 30px 0px;
-}
-.personal__menu__list {
-    display: flex;
-}
-.personal__menu__item:not(:last-child) {
-    margin: 0px 60px 0px 0px;
-}
-.personal__menu__item {
-}
-.personal__menu__link {
-    color: #800080;
-    font-size: 20px;
-    font-weight: 400;
-}
-/*---------------------------------------------------*/
-.weather__menu {
-    margin: 0px 0px 30px 0px;
-}
-.weather__menu__list {
-    display: flex;
-}
-.weather__menu__item:not(:last-child) {
-    margin: 0px 60px 0px 0px;
-}
-.weather__menu__item {
-}
-.weather__menu__link {
-    color: #800080;
-    font-size: 20px;
-    font-weight: 400;
-}
-/*---------------------------------------------------*/
-.message__error {
-    margin: 0px 0px 10px 0px;
+.flash{
     color: red;
-    font-size: 14px;
-}
-.find__city__form__add{
-    margin: 5px 0px 10px 0px;
     font-size: 16px;
-}
-.info__many__city{
-    margin: 5px 0px 10px 0px;
-    font-size: 16px;
-}
-.case__city__form__input{
-    margin: 0px 0px 10px 0px;
-    font-size: 18px;
-}
-.case__city__item{
-    margin: 5px ;
-    font-size: 18px;
-}
-.div__table__weather{
-    margin: 5px 0px 10px 0px;
-}
-.table__title{
-    margin: 10px ;
-    font-size: 18px;
-}
-.table__weather {
-    border-collapse: collapse;
-}
-.table__weather th{
-    padding: 0 3px;
-}
-.table__weather td {
-    padding: 0 3px;
-}
-.table__weather th{
-    border: 1px solid #000;
-}
-.table__weather td{
-    border: 1px solid #000;
-}
-.weather__rain{
-    font-size: 12px;
 }
 /*================== АВТОРИЗАЦИЯ ============================*/
 .form_auth_block{
@@ -228,3 +161,87 @@ input:focus {
     cursor: pointer;
 }
 /*================== РЕГИСТРАЦИЯ ============================*/
+.main__container {
+    background-color: #DCDCDC;
+    max-width: 900px;
+    padding: 0px 15px;
+    margin: 0px auto;
+}
+/*---------------------------------------------------*/
+.personal__menu {
+    margin: 0px 0px 30px 0px;
+}
+.personal__menu__list {
+    display: flex;
+}
+.personal__menu__item:not(:last-child) {
+    margin: 0px 60px 0px 0px;
+}
+.personal__menu__item {
+}
+.personal__menu__link {
+    color: #800080;
+    font-size: 26px;
+    font-weight: 400;
+}
+/*---------------------------------------------------*/
+.link__add {
+    display: flex;
+}
+.link__input {
+    display: block;
+    width: 80%;
+    height: 30px;
+    padding: 5px 5px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+}
+.button__add__link {
+    margin: 0px 0px 0px 20px;
+}
+.link__all__list {
+    margin: 0px 0px 0px 20px;
+}
+.link__list {
+}
+.link__item {
+    margin: 10px 0px 10px 0px;
+}
+/*----------------------------------------*/
+.note__add {
+    display: flex;
+}
+.note__input {
+    display: block;
+    width: 30%;
+    height: 30px;
+    padding: 5px 5px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+}
+.button__add__note {
+    margin: 0px 0px 0px 20px;
+}
+.note__all__list {
+    margin: 0px 0px 0px 20px;
+}
+.note__list {
+}
+.note__item {
+    margin: 10px 0px 10px 0px;
+}
+/*----------------------------------------*/

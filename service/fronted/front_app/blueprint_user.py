@@ -1,5 +1,8 @@
 import requests
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, \
+    url_for, make_response
+from flask_jwt_extended import set_access_cookies, get_jwt_identity, \
+    jwt_required, unset_access_cookies
 from .api_services.user import *
 
 front_user_bp = Blueprint('fronted_user', __name__)
@@ -26,7 +29,12 @@ def register():
             if response.status_code not in [200, 400]:
                 raise Exception(f"{response.status_code } - Неизвестная ошибка")
 
-            return redirect(url_for('fronted_user.profile'))
+            redirect_profile = make_response(redirect(
+                url_for('fronted_user.profile')))
+            set_access_cookies(redirect_profile,
+                               response.json()['access_token'])
+
+            return redirect_profile
 
     except Exception as e:
         flash(f'Error. <{e}>')
@@ -54,7 +62,12 @@ def auth():
             if response.status_code not in [200, 400]:
                 raise Exception(f"{response.status_code } - Неизвестная ошибка")
 
-            return redirect(url_for('fronted_user.profile'))
+            redirect_profile = make_response(redirect(
+                url_for('fronted_user.profile')))
+            set_access_cookies(redirect_profile,
+                               response.json()['access_token'])
+
+            return redirect_profile
 
     except Exception as e:
         flash(f'{e}')
@@ -63,16 +76,23 @@ def auth():
 
 
 @front_user_bp.route("/logout", methods=['GET', 'POST'])
+@jwt_required()
 def logout():
     """ Представления для logout """
-    return "logout"
+    redirect_auth = make_response(redirect(url_for('fronted_user.auth')))
+    unset_access_cookies(redirect_auth)
+    return redirect_auth
 
 
 @front_user_bp.route("/profile", methods=['GET', 'POST'])
+@jwt_required()
 def profile():
     """ Представления для личного кабинете """
     context = dict()
     context['title'] = 'Личный кабинет'
+
+    context['current_user'] = get_jwt_identity()
+
     return render_template("user/profile.html", context=context)
 
 

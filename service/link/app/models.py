@@ -12,7 +12,7 @@ class Link(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(250), nullable=False)
-    comment = db.Column(db.String(250), nullable=False)
+    comment = db.Column(db.String(250))
     create = db.Column(db.DateTime, default=datetime.datetime.today())
     user_id = db.Column(db.Integer, nullable=False)
 

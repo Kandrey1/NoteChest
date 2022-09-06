@@ -1,0 +1,6 @@
+SERVICE_LINK_HOST = 'http://service_link:5000'
+SERVICE_LINK_ADD = '/api/link/add'
+SERVICE_LINK_UPDATE = '/api/link/update'
+SERVICE_LINK_DELETE = '/api/link/delete'
+SERVICE_LINK_GET_ALL = '/api/link/get/all'
+SERVICE_LINK_GET = '/api/link/get'

@@ -1,0 +1,10 @@
+psycopg2-binary==2.9.3
+Flask==2.2.2
+flask-jwt-extended==4.4.4
+Flask-RESTful==0.3.9
+flask_marshmallow==0.14.0
+marshmallow==3.17.0
+marshmallow-sqlalchemy==0.28.1
+Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.40
+Werkzeug==2.2.2

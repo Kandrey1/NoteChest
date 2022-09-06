@@ -16,20 +16,35 @@
                             <li class="menu__item">
                                 <a href="{{ url_for('index') }}" class="menu__link">Главная</a>
                             </li>
-                            <div class="enter">
-
-                                    <ul class="enter__list">
-                                        <li class="enter__item"><a href="{{ url_for('fronted_user.register') }}" class="enter__link">Регистрация |</a></li>
-                                        <li class="enter__item"><a href="{{ url_for('fronted_user.auth') }}" class="enter__link">| Войти</a></li>
-                                    </ul>
-
-
-                            </div>
+                            {% if not request.cookies.get('access_token_cookie') %}
+                                <div class="enter">
+                                        <ul class="enter__list">
+                                            <li class="enter__item"><a href="{{ url_for('fronted_user.register') }}" class="enter__link">Регистрация |</a></li>
+                                            <li class="enter__item"><a href="{{ url_for('fronted_user.auth') }}" class="enter__link">| Войти</a></li>
+                                        </ul>
+                                </div>
+                            {% else %}
+                                <div class="enter">
+                                        <ul class="enter__list">
+                                            <li class="enter__item"><a href="{{ url_for('fronted_user.profile') }}" class="enter__link">Личный кабинет |</a></li>
+                                            <li class="enter__item"><a href="{{ url_for('fronted_user.logout') }}" class="enter__link">| Выйти</a></li>
+                                        </ul>
+                                </div>
+                            {% endif %}
                         </ul>
                     </nav>
             </div>
         </header>
         <main class="main__container">
+            {% if request.cookies.get('access_token_cookie') %}
+                <div class="personal__menu">
+                    <ul class="personal__menu__list">
+                        <li class="personal__menu__item"><a href="{{ url_for('fronted_link.links') }}" class="personal__menu__link">Ссылки</a></li>
+                        <li class="personal__menu__item"><a href="{{ url_for('fronted_note.notes') }}" class="personal__menu__link">Заметки</a></li>
+                    </ul>
+                </div>
+            {% endif %}
+
             {% block content %}
             {% endblock %}
         </main>

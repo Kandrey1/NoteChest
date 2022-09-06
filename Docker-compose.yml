@@ -14,15 +14,16 @@ services:
     restart: always
     ports:
       - 5432:5432
-  service_fronted:
-    build: ./service/fronted
-    container_name: service_fronted
-    depends_on:
-      - postgres
-      - service_user
-      - service_link
-    ports:
-      - 5000:5000
+#  service_fronted:
+#    build: ./service/fronted
+#    container_name: service_fronted
+#    depends_on:
+#      - postgres
+#      - service_user
+#      - service_link
+#      - service_note
+#    ports:
+#      - 5000:5000
   service_user:
     build: ./service/user
     container_name: service_user
@@ -38,3 +39,12 @@ services:
       - service_user
     ports:
       - 5002:5000
+  service_note:
+    build: ./service/note
+    container_name: service_note
+    depends_on:
+      - postgres
+      - service_user
+      - service_link
+    ports:
+      - 5003:5000

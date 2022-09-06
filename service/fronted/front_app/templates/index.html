@@ -3,6 +3,8 @@
 {% block content %}
 
 <h1> Главная страница </h1>
-
+    {% if not request.cookies.get('access_token_cookie') %}
+        <p> Авторизуйтесь для просмотра своих ссылок и заметок. </p>
+    {% endif %}
 
 {% endblock %}
