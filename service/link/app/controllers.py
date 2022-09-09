@@ -21,7 +21,7 @@ class ControllersLinkAdd(Resource):
             data_json = request.get_json()
 
             if Link.query.filter(Link.url == data_json['url']).first():
-                raise Exception(f"Link exist")
+                raise Exception(f"Такая ссылка уже существует")
 
             new_link = Link(url=data_json['url'],
                             comment=data_json['comment'],

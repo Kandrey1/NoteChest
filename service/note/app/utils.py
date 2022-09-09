@@ -16,7 +16,7 @@ class Database:
 
         except Exception as e:
             db.session.rollback()
-            raise Exception(f"Error database (SAVE): <{e}>")
+            raise Exception(f"Ошибка при сохранении в БД: <{e}>")
 
     @classmethod
     def update(cls, data_response: dict) -> None:
@@ -37,7 +37,7 @@ class Database:
 
         except Exception as e:
             db.session.rollback()
-            raise Exception(f"Error database (UPDATE): <{e}>")
+            raise Exception(f"Ошибка при обновлении записи в БД: <{e}>")
 
     @classmethod
     def dell(cls, id_delete: int) -> None:
@@ -51,4 +51,4 @@ class Database:
 
         except Exception as e:
             db.session.rollback()
-            raise Exception(f"Error database (DELETE): <{e}>")
+            raise Exception(f"Ошибка при удалении записи из БД: <{e}>")

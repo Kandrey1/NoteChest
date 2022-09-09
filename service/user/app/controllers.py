@@ -22,7 +22,8 @@ class ControllersUserRegister(Resource):
             data_json = request.get_json()
 
             if User.query.filter(User.email == data_json['email']).first():
-                raise Exception(f"User with email: {data_json['email']} exist")
+                raise Exception(f"Пользователь с таким email: "
+                                f"{data_json['email']} уже существует")
 
             new_user = User(login=data_json['login'],
                             email=data_json['email'],

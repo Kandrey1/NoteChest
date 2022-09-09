@@ -54,7 +54,7 @@ class User(db.Model):
         """
         user = cls.query.filter(cls.email == email).first()
         if not user or not bcrypt.verify(password, user.password):
-            raise Exception('Incorrect email or password')
+            raise Exception('Неправильный email или пароль')
         return user
 
 

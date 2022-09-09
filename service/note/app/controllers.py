@@ -20,7 +20,7 @@ class ControllersNoteAdd(Resource):
             data_json = request.get_json()
 
             if Note.query.filter(Note.text == data_json['text']).first():
-                raise Exception(f"Note exist")
+                raise Exception(f"Такая заметка уже существует")
 
             new_note = Note(text=data_json['text'],
                             user_id=data_json['user_id'])
