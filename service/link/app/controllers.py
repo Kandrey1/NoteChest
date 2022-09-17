@@ -21,7 +21,7 @@ class ControllersLinkAdd(Resource):
             data_json = request.get_json()
 
             if Link.query.filter(Link.url == data_json['url']).first():
-                raise Exception(f"Такая ссылка уже существует")
+                raise Exception("Такая ссылка уже существует")
 
             new_link = Link(url=data_json['url'],
                             comment=data_json['comment'],
@@ -57,7 +57,7 @@ class ControllersLinkUpdate(Resource):
         except Exception as e:
             return {'Error': f'{e}'}, 400
 
-        return {'message': f"Link update"}, 200
+        return {'message': "Link update"}, 200
 
 
 class ControllersLinkDelete(Resource):
@@ -79,7 +79,7 @@ class ControllersLinkDelete(Resource):
         except Exception as e:
             return {'Error': f'{e}'}, 400
 
-        return {'message': f"Link delete"}, 200
+        return {'message': "Link delete"}, 200
 
 
 class ControllersLinkGetAll(Resource):

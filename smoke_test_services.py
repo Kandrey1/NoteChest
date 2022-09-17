@@ -11,7 +11,7 @@ try:
         print("Service USER: OK")
     else:
         print("Service USER: NO CONNECT")
-except:
+except Exception:
     print("Service USER: Error")
 time.sleep(1)
 try:
@@ -22,7 +22,7 @@ try:
         print("Service LINK: OK")
     else:
         print("Service LINK: NO CONNECT")
-except:
+except Exception:
     print("Service LINK: Error")
 time.sleep(1)
 try:
@@ -33,11 +33,7 @@ try:
         print("Service FRONTED: OK")
     else:
         print("Service FRONTED: NO CONNECT")
-except:
+except Exception:
     print("Service FRONTED: Error")
-
-
-
-
 
 print("Testing END")

@@ -20,7 +20,7 @@ class ControllersNoteAdd(Resource):
             data_json = request.get_json()
 
             if Note.query.filter(Note.text == data_json['text']).first():
-                raise Exception(f"Такая заметка уже существует")
+                raise Exception("Такая заметка уже существует")
 
             new_note = Note(text=data_json['text'],
                             user_id=data_json['user_id'])
@@ -54,7 +54,7 @@ class ControllersNoteUpdate(Resource):
         except Exception as e:
             return {'Error': f'{e}'}, 400
 
-        return {'message': f"Note update"}, 200
+        return {'message': "Note update"}, 200
 
 
 class ControllersNoteDelete(Resource):
@@ -76,7 +76,7 @@ class ControllersNoteDelete(Resource):
         except Exception as e:
             return {'Error': f'{e}'}, 400
 
-        return {'message': f"Note delete"}, 200
+        return {'message': "Note delete"}, 200
 
 
 class ControllersNoteGetAll(Resource):

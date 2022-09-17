@@ -7,7 +7,7 @@ try:
     check_call("docker run --name smk_cont -p 5000:5000 -d smk".split())
     test_smoke = True
 except Exception:
-   pass
+    pass
 finally:
     check_call("docker stop smk_cont".split())
     check_call("docker rm smk_cont".split())

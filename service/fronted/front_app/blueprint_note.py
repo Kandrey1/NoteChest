@@ -1,7 +1,8 @@
 import requests
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from .api_services.note import *
+from .api_services.note import SERVICE_NOTE_HOST, SERVICE_NOTE_ADD, \
+    SERVICE_NOTE_DELETE, SERVICE_NOTE_GET
 
 
 front_note_bp = Blueprint('fronted_note', __name__)

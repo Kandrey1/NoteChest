@@ -3,7 +3,8 @@ from flask import Blueprint, render_template, request, flash, redirect, \
     url_for, make_response
 from flask_jwt_extended import set_access_cookies, get_jwt_identity, \
     jwt_required, unset_access_cookies
-from .api_services.user import *
+from .api_services.user import SERVICE_USER_HOST, SERVICE_USER_AUTH,\
+    SERVICE_USER_REGISTER
 
 front_user_bp = Blueprint('fronted_user', __name__)
 
